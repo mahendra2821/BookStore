@@ -28,3 +28,13 @@ const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
 
 
+
+app.post('/api/book' , (req, res) => {
+  const newBook = {id: Date.now() , ...req.body}
+  books.push(newBook) 
+  res.status(201).json(newBook)
+})
+
+
+const {MongoClient} = require('mongodb');
+const uri = "mongodb://localhost:27014";
